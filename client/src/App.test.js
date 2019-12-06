@@ -6,6 +6,6 @@ import App from "./App";
 
 test("renders an element with specific text", () => {
   const wrapper = rtl.render(<App />);
-  const element = wrapper.queryByText(/hello/i);
+  const element = wrapper.queryByText(/List of Players/i);
   expect(element).toBeInTheDocument();
 });
