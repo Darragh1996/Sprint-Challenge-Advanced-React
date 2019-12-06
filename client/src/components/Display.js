@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import axios from "axios";
+import Card from "./Card";
 
 export default class Display extends Component {
   constructor(props) {
@@ -14,12 +15,17 @@ export default class Display extends Component {
       .get("http://localhost:5000/api/players")
       .then(res => {
         console.log(res.data);
+        this.setState({
+          players: res.data
+        });
       })
       .catch(err => {
         console.log(err);
       });
   }
   render() {
-    return <h1>hello</h1>;
+    return this.state.players.map(player => {
+      return <Card player={player} key={player.id} />;
+    });
   }
 }
